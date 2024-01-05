@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/login_page.dart';
+import 'package:myapp/theme/theme.dart';
+import 'package:myapp/utils/routes.dart';
 import 'pages/home_page.dart';
 void main() {
   runApp(const MyApp());
@@ -12,22 +14,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      title: 'Flutter Demo',
-
-      theme: ThemeData.light(
-        useMaterial3: true,
-      ),
+      title: 'EcomApp',
+      themeMode: ThemeMode.light,
+      theme: MyTheme.lightTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
+      
       // darkTheme: ThemeData(
       //   brightness:Brightness.dark,
         
       // ),
       
-      initialRoute: "/login",
+      initialRoute: MyRoutes.homeRoute,
       routes: {
-        "/":(context) =>const HomePage(),
-        "/login":(context) =>const LoginPage()
+        MyRoutes.homeRoute:(context) =>const HomePage(),
+        MyRoutes.loginRoute:(context) => LoginPage()
 
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
